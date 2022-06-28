@@ -1,4 +1,4 @@
-let testObject = [
+let testJSONObject = [
     {
         "id": "UdldmYgIOr",
         "type": "header",
