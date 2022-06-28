@@ -1,18 +1,16 @@
 function jsonHtmlParser(blocks){
 
-    blocksDict = {
-        'header': heading(block),
-        'paragraph': paragraph(block),
-        'linkTool': linkTool(block),
-        'quote': quote(block),
-        'list': list(block),
-        'checklist': checklist(block),
-        'raw': raw(block),
-        'image': image(block),
-        'embed': embed(block)
-    }
+    div = document.createElement('div');
 
-    function heading(block){
+    for(i in blocks){
+        block = blocks[i];
+
+        div.innerHTML += eval(block.type +'(block)');
+    }
+    
+    return div
+
+    function header(block){
         return `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
     }
     function paragraph(block){
@@ -23,13 +21,13 @@ function jsonHtmlParser(blocks){
         return null;
     }
     function quote(block){
-        return `<q cite="${block.data.ccaption}">${block.data.text}</q>`;
+        return `<q cite="${block.data.caption}">${block.data.text}</q>`;
     }
     function list(block){
         str = '';
 
         for(i in block.data.items) {
-            str += `<li>${block.data.items[i].text}</li>\n`;
+            str += `<li>${block.data.items[i]}</li>\n`;
         }
 
         if(block.data.style == 'ordered'){
@@ -63,7 +61,7 @@ function jsonHtmlParser(blocks){
         return `<img src="${block.data.url}"  alt="${block.data.caption}">`;
     }
     function embed(block){ 
-        return `<iframe src="${block.data.source}" frameborder="0"></iframe>`
+        return `<iframe src="${block.data.embed}" frameborder="0"></iframe>`
     }
 
 }
