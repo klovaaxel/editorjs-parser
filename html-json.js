@@ -6,7 +6,6 @@ function parseHTMLtoJSON(html){
         const element = html.children[i];
 
         str = element.tagName.replace(/[0-9]/g, '') + '(element)'
-        console.log(str)
         blocks.push(eval(str));
         
     }
