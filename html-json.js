@@ -65,6 +65,19 @@ function parseHTMLtoJSON(html){
         return block
     }
 
+    function BLOCKQUOTE(element){
+        block = {
+            "type": "quote",
+            "data": {
+                "text": element.innerHTML,
+                "caption": element.cite,
+                "alignment": "left"
+            }
+        }
+
+        return block
+    }
+
     function UL(element){
         elementItems = element.children;
         items = [];
