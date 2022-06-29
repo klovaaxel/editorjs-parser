@@ -1,4 +1,4 @@
-function jsonHtmlParser(blocks){
+function parseJSONtoHTML(blocks){
 
     div = document.createElement('div');
 
