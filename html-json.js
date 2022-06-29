@@ -138,6 +138,16 @@ function parseHTMLtoJSON(html){
 
         return block
     }
+    function PRE(element){
+        block = {
+            "type": "raw",
+            "data": {
+                "html": element.innerHTML
+            }
+        }
+
+        return block
+    }
 
     function IMG(element){
         block = {
